@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Getting Started: Handling Form Submission</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+        <style>
+            a{
+                color: black;
+            }
+            .right {
+                border-radius: 5px;
+                background-color:   #ffffff;
+            }
+
+            .left{
+                padding-bottom: 50px;
+                padding-left:0;
+                bottom: 0;
+                left: 100px;
+                width: 600px;
+                height: 230px;
+                border-radius: 20px;
+                font-size: 50px;
+
+            }
+
+            .center {
+
+                padding-bottom: 50px;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 600px;
+                height: 230px;
+                border-radius: 20px;
+                font-size: 50px;
+
+
+            }
+            .box {
+                display: flex;
+            }
+            .box > div {
+                width: 33%;
+                padding: 5px;
+            }
+
+            @media screen and (max-width: 400px)  {
+                .box {
+                    flex-direction: column-reverse;
+                }
+                .box > div {
+                    width: 100%;
+                }
+            }
+
+        </style>    
+        <script type="text/javascript">
+            (function () {
+
+                var img = document.getElementById('container').firstChild;
+                img.onload = function () {
+                    if (img.height > img.width) {
+                        img.height = '100%';
+                        img.width = 'auto';
+
+                    }
+                };
+
+            }());
+        </script>
+    </head>
+
+
+    <body>
+        <div class="box"  style="text-align: center">
+            <div class="left" id="container" style="padding-top:10px"  padding-left="10px" >
+                <img src="NewLogo.PNG" align="left" alt="" width="300" height="300" style="object-position:right" >
+            </div>
+            <div class="center" style="padding-top: 90px" >
+
+                <div><a href="/home"  style="font-size:120%" width="300" height="300" >Report hate crime</a></div>
+                <div><a href="/adminlogin" style="font-size:120%" width="300" height="300">Admin login</a></div>
+            </div>
+            <div class="right">
+
+            </div>
+
+        </div>
+    </body>
+</html>

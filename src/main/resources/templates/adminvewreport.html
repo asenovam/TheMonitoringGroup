@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Getting Started: Handling Form Submission</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+        <style>
+            input[type=text], select {
+
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            p{
+                font-family:"Times New Roman", Times, serif;
+                font-size: 20px;
+            }
+            a{
+                font-family:"Times New Roman", Times, serif;
+                font-size: 20px;
+            }
+
+            input[type=submit], input[type=reset]  {
+
+                width: 100%;
+                background-color: #000099;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            input[type=submit]:hover { 
+                background-color:  #000099;
+            }
+
+            div {
+                border-radius: 5px;
+                background-color: #e4c330;
+                padding: 20px;
+                margin: auto;
+                width: 30%;
+            }
+
+        </style>    
+
+    </head>
+    <body>
+
+        <div>
+
+            <div style="border-spacing: 10px; justify-content: center;  align-items: center;  display: flex;">
+                <a th:href="@{/adminuserdashboard(email=${#request.getParameter('email')}, page=1, size=10)}">Back</a>
+            </div>
+
+            <p>Report incident with next data: </p>
+
+            <p th:text="'Report unique ID: ' + ${report.uid}" />
+
+            <p th:text="'Name: ' + ${report.name}" />
+            <p th:text="'Email: ' + ${report.email}" />
+            <p th:text="'Phone number: ' + ${report.phoneNumber}" />
+            <p th:text="'Address: ' + ${report.address}" />
+
+            <p th:text="'Location of incidence: ' + ${report.location}" />
+            <p th:text="'Gender: ' + ${report.gender}" />
+            
+
+            <p th:text="'Age: ' + ${report.age}" />
+            <p th:text="'Is Via representitive: ' + ${report.isViaRepresentitive}" />
+            <p th:text="'Outcomes: ' + ${report.outcomes}" />
+            <p th:text="'Type of incident: ' + ${report.typePfAttack}" />
+            <p th:text="'Who is involved in the incident: ' + ${report.attackyee}" />
+            <p th:text="'Are There Witnesses: ' + ${report.areThereWitnesses}" />
+            <p th:text="'Date of incident: ' + ${report.areThereWitnesses}" />
+            <p th:text="'Witnesses Names: ' + ${report.witnessesNames}" />
+            <p th:text="'Incident history: ' + ${report.attackHistory}" />
+            <p th:text="'Incident case: ' + ${report.attackCase}" />
+            <p th:text="'Supportive people: ' + ${report.supportiveGroup}" />
+            <p th:text="'Are there relative involved: ' + ${report.relativeInvoled}" />
+            <p th:text="'Relative relationship: ' + ${report.relativeRelationship}" />
+            <p th:text="'Relative age: ' + ${report.relativeAge}" />
+            <p th:text="'Is Intrepreter needed?: ' + ${report.needIntrepreter}" />
+
+
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,143 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Getting Started: Handling Form Submission</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+        <style>
+
+            input[type=text], select, a {
+                font-family:"Times New Roman", Times, serif;
+                font-size: 20px;
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            input[type=submit], input[type=reset], a  {
+                font-family:"Times New Roman", Times, serif;
+                font-size: 20px;
+                width: 100%;
+                background-color: #e4c330;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            input[type=submit]:hover { 
+                background-color:  #e4c330;
+            }
+
+            div {
+
+                border-radius: 5px;
+                background-color:#ffffff;
+                padding: 20px;
+                margin: auto;
+                width: 90%;
+            }
+
+
+            .right {
+                border-radius: 5px;
+                background-color: #ffffff;
+            }
+
+            .left {
+                border-radius: 5px;
+                background-color: #ffffff;
+            }
+
+            .center {
+                border-radius: 5px;
+                background-color: #ffffff; 
+            }
+
+
+            .box {
+                display: flex;
+            }
+            .box > div {
+                width: 60%;
+                padding: 5px;
+            }
+
+            @media screen and (max-width: 400px)  {
+                .box {
+                    flex-direction: column-reverse;
+                }
+                .box > div {
+                    width: 100%;
+                }
+            }
+
+            #reports {
+                font-family:"Times New Roman", Times, serif;
+                font-size: 20px;
+                border-collapse: collapse;
+                width: 80%;
+                margin:auto;
+            }
+
+            #reports td, #reports th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #reports tr:nth-child(even){background-color: #ffffff;}
+
+            #reports tr:hover {background-color:#FED936;}
+
+            #reports th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #000099;
+                color: white;
+            }
+
+        </style>   
+    </head>
+    <body>
+        <h1 style="text-align: center;">Reports admnistration</h1>
+        <p th:text="'Hello : ' + ${userDashboard.name}" />
+
+        <div class="box">  
+            <div class="center">
+                <h2 style="text-align: center;">All reports ordered by submission date:</h2>
+                <table id="reports">
+                    <tr>
+                        <th>Report unique ID: </th>
+                        <th>Date of submission: </th>
+                        <th>Attack location: </th>
+                        <th>Phone: </th>
+                    </tr>
+                    <tr th:each="item : ${userDashboard.reports}">
+                        <td><a th:href="@{/adminvewreport(reportid=${item.uid}, email=${#request.getParameter('email')})}" th:text="${item.uid}" ></a></td>
+                        <td><span th:text="${item.reportSubmitionDate}" /></td>
+                        <td><span th:text="${item.location}" /></td>
+                        <td><span th:text="${item.phoneNumber}" /></td>
+                    </tr>
+                </table>
+
+                <div th:if="${userDashboard.showNextBtn}" style="border-spacing: 10px; justify-content: center;  align-items: center;  display: flex;">
+                    <a th:href="@{/adminuserdashboard(email=${#request.getParameter('email')},page=${userDashboard.nextPage},size=10)}"
+                       th:text="More"></a>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+</html>

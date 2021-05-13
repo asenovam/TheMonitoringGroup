@@ -1,0 +1,134 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Getting Started: Handling Form Submission</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+        <style>
+
+            input[type=text], select, a {
+
+                display: inline-block;
+
+                box-sizing: border-box;
+            }
+
+            input[type=submit], input[type=reset], a  {
+                font-family:"Times New Roman", Times, serif;
+                font-size: 20px;
+                width: 100%;
+                background-color: #e4c330;
+                color: black;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            input[type=submit]:hover { 
+                background-color:  #9CC052;
+            }
+            a{
+                text-align: center;
+
+            }
+
+            div {
+
+
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px;
+                margin: auto;
+                width: 90%;
+            }
+
+            .h2{
+                text-align: center;
+            }
+
+
+
+
+
+            .center{
+
+                border-radius: 5px;
+                background-color: #f2f2f2;
+            }
+
+            .box {
+                display: flex;
+            }
+            .box > div {
+                width: 40%;
+                padding: 5px;
+            }
+
+            @media screen and (max-width: 400px)  {
+                .box {
+                    flex-direction: column-reverse;
+                }
+                .box > div {
+                    width: 100%;
+                }
+            }
+
+            #reports {
+
+                font-family:"Times New Roman", Times, serif;
+                font-size: 20px;
+                border-collapse: collapse;
+                width: 80%;
+                margin:auto;
+            }
+
+            #reports td, #reports th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #reports tr:nth-child(even){background-color: #f2f2f2;}
+
+            #reports tr:hover {background-color: #ddd;}
+
+            #reports th {
+                font-family:"Times New Roman", Times, serif;
+                font-size: 18px;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color: #e4c330;
+                color: black;
+            }
+
+        </style>   
+    </head>
+    <body>
+
+        <p th:text="'Hello : ' + ${userDashboard.name}" />
+
+        <div class="box">  
+            <div class="center">
+                <a th:href="@{/report(email=${#request.getParameter('email')}, name=${userDashboard.name})}">New  report</a>
+                <a style="background-color: #f2f2f2; color:#000000" >Your previous reports:</a>
+                <table id="reports">
+                    <tr>
+                        <th>Report unique ID: </th>
+                        <th>Date of submission: </th>
+                    </tr>
+                    <tr th:each="item : ${userDashboard.reports}">
+                        <td><a th:href="@{/vewreport(reportid=${item.uid})}" th:text="${item.uid}" ></a></td>
+                        <td><span th:text="${item.reportSubmitionDate}" /></td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+        </div>
+
+</html>

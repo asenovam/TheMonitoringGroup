@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Getting Started: Handling Form Submission</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+        <style>
+            input[type=text], select {
+                font-family:"Times New Roman", Times, serif;
+                font-size: 23px;
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            input[type=submit], input[type=reset]  {
+                font-family:"Times New Roman", Times, serif;
+                font-size: 23px;
+                width: 100%;
+                background-color: #7644A0;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            input[type=submit]:hover { 
+                background-color:  #7644A0;
+            }
+
+            div {
+                font-family:"Times New Roman", Times, serif;
+                font-size: 23px;
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px;
+                margin: auto;
+                width: 30%;
+            }
+        </style>    
+
+    </head>
+    <body>
+
+        <div>
+
+            <div style="border-spacing: 10px; justify-content: center;  align-items: center;  display: flex;">
+                <a th:href="@{/userdashboard(email=${report.email})}">Back</a>
+            </div>
+
+            <p>Report incident with next data: </p>
+
+            <p th:text="'Report unique ID: ' + ${report.uid}" />
+
+            <p th:text="'Name: ' + ${report.name}" />
+            <p th:text="'Email: ' + ${report.email}" />
+            <p th:text="'Phone number: ' + ${report.phoneNumber}" />
+            <p th:text="'Address: ' + ${report.address}" />
+            <p th:text="'Message: ' + ${report.message}" />
+            <p th:text="'Supporting files: ' + ${report.files}" />
+           
+
+        </div>
+    </body>
+</html>
